@@ -72,7 +72,7 @@ export default function Archive({ onProductClick }: ArchiveProps) {
       id="archive"
       className="py-24 md:py-32 relative overflow-hidden"
       style={{
-        backgroundImage: "url('/src/assets/images/speckled_paper_1780458430027.png')",
+        backgroundImage: "url('/assets/images/speckled_paper_1780458430027.png')",
         backgroundSize: "500px",
         backgroundRepeat: "repeat",
         backgroundColor: "#faf9f8"

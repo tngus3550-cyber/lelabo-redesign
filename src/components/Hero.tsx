@@ -11,7 +11,7 @@ export default function Hero({ onExploreClick, onViewCollectionClick }: HeroProp
       {/* Immersive Lab Background Image */}
       <div className="absolute inset-0 z-0">
         <motion.img
-          src="/src/assets/images/perfumer_lab_hero_1780294612666.png"
+          src="/assets/images/perfumer_lab_hero_1780294612666.png"
           alt="Artisanal Fragrance Laboratory Formulation background"
           initial={{ scale: 1.05, opacity: 0.7 }}
           animate={{ scale: 1, opacity: 0.55 }}

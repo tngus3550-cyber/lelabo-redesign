@@ -127,7 +127,7 @@ export default function LoginModal({ isOpen, onClose, onLoginSuccess }: LoginMod
         transition={{ duration: 0.3 }}
         className="relative max-w-md w-full border border-[#dbdad9] p-8 shadow-2xl overflow-hidden pointer-events-auto"
         style={{
-          backgroundImage: "url('/src/assets/images/speckled_paper_1780458430027.png')",
+          backgroundImage: "url('/assets/images/speckled_paper_1780458430027.png')",
           backgroundSize: "350px",
           backgroundRepeat: "repeat",
           backgroundColor: "#fbf9f9"
