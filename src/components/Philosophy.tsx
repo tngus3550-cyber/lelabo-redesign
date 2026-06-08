@@ -2,6 +2,12 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Sparkles, Tag, PenTool, RotateCcw, X } from "lucide-react";
 
+const philosophyBg = new URL("../assets/images/speckled_paper_1780458430027.png", import.meta.url).href;
+const freshBlendingImage = new URL("../assets/images/fresh_blending_1780544160550.png", import.meta.url).href;
+const personalLabelingImage = new URL("../assets/images/personal_labeling_1780544176452.png", import.meta.url).href;
+const engravingServiceImage = new URL("../assets/images/engraving_service_1780544190540.png", import.meta.url).href;
+const refillServiceImage = new URL("../assets/images/refill_service_1780544203594.png", import.meta.url).href;
+
 export default function Philosophy() {
   const [activeDetail, setActiveDetail] = useState<string | null>(null);
 
@@ -10,7 +16,7 @@ export default function Philosophy() {
       id: "fresh-blending",
       title: "FRESH BLENDING",
       titleKo: "프레쉬 블렌딩",
-      image: "./assets/images/fresh_blending_1780544160550.png",
+      image: freshBlendingImage,
       icon: <Sparkles className="w-3.5 h-3.5" />,
       desc: "원하는 르 라보의 향을 선택하고, 수작업으로 신선하게 블렌딩된 향수를 만날 수 있습니다.",
       details: "대량 생산된 제품을 재고로 쌓아두지 않습니다. 오직 당신의 주문이 확정되는 즉시, 전문 조향사가 숙성된 원료에서 에센셜 오일을 계량하여 신선하게 정제수와 알코올에 배합합니다. 블렌딩 시점의 환경(온도, 습도)까지 계측하여 최적의 발향을 만들어냅니다."
@@ -19,7 +25,7 @@ export default function Philosophy() {
       id: "personal-labeling",
       title: "PERSONAL LABELING",
       titleKo: "퍼스널 라벨링",
-      image: "./assets/images/personal_labeling_1780544176452.png",
+      image: personalLabelingImage,
       icon: <Tag className="w-3.5 h-3.5" />,
       desc: "18자의 원하는 문구를 크리에이션에 담을 수 있습니다. 이 경험은 전 세계 르 라보 매장에서 동일하게 제공됩니다.",
       details: "라벨은 향수의 진정한 소유권을 의미합니다. 조향 단계가 끝난 향수의 보틀에는 원료 구성 정보, 조향 장소, 조향 일자와 함께 영문 대소문자, 숫자, 마침표를 사용하여 당신이 지정한 23자 이내의 메모가 빈티지 면라벨 직조지에 인쇄되어 붙여집니다."
@@ -28,7 +34,7 @@ export default function Philosophy() {
       id: "engraving-service",
       title: "ENGRAVING SERVICE",
       titleKo: "각인 서비스",
-      image: "./assets/images/engraving_service_1780544190540.png",
+      image: engravingServiceImage,
       icon: <PenTool className="w-3.5 h-3.5" />,
       desc: "트래블 튜브 케이스에 이니셜을 새길 수 있습니다.",
       details: "소중한 사람에게 전하는 특별한 순간. 보틀의 메탈 캡 혹은 글라스 본체에 다이아몬드 에칭 도구로 세밀하게 이니셜이나 특별한 숫자를 수작업으로 마킹해 드립니다. 장인의 손끝에 전해지는 조절된 압력으로 각인되므로 수공예 아날로그 감성을 한층 더해줍니다."
@@ -37,7 +43,7 @@ export default function Philosophy() {
       id: "refill-system",
       title: "REFILL SYSTEM",
       titleKo: "리필",
-      image: "./assets/images/refill_service_1780544203594.png",
+      image: refillServiceImage,
       icon: <RotateCcw className="w-3.5 h-3.5" />,
       desc: "원하는 르 라보의 향을 선택하고, 수작업으로 신선하게 블렌딩된 향수를 만날 수 있습니다.",
       details: "다 사용한 오리지널 보틀을 가지고 전 세계의 모든 ESSENCE LAB 매장에 방문하시면, 기존 라벨을 가치 있게 보존한 상태에서 신선한 동일 향을 20% 할인된 가격에 간편하게 충전해 드립니다. 유리를 버리지 않고 순환시키는 지속 가능한 럭셔리 실천입니다."
@@ -49,7 +55,7 @@ export default function Philosophy() {
       id="philosophy"
       className="pb-24 pt-32 md:pb-32 md:pt-40 border-b border-[#efeded] relative"
       style={{
-        backgroundImage: "url('./assets/images/speckled_paper_1780458430027.png')",
+        backgroundImage: `url(${philosophyBg})`,
         backgroundSize: "500px",
         backgroundRepeat: "repeat",
         backgroundColor: "#fbf9f9"

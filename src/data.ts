@@ -1,5 +1,12 @@
 import { ScentProduct, ScentQuizQuestion } from "./types";
 
+const santalImage = new URL("./assets/images/regenerated_image_1780295930617.jpg", import.meta.url).href;
+const matchaImage = new URL("./assets/images/regenerated_image_1780295931994.jpg", import.meta.url).href;
+const noirImage = new URL("./assets/images/regenerated_image_1780295932621.jpg", import.meta.url).href;
+const anotherImage = new URL("./assets/images/regenerated_image_1780296385016.jpg", import.meta.url).href;
+const roseImage = new URL("./assets/images/regenerated_image_1780296386004.jpg", import.meta.url).href;
+const bergamoteImage = new URL("./assets/images/regenerated_image_1780296387085.jpg", import.meta.url).href;
+
 export const SCENT_PRODUCTS: ScentProduct[] = [
   {
     id: "santal-33",
@@ -7,7 +14,7 @@ export const SCENT_PRODUCTS: ScentProduct[] = [
     subtitle: "Cardamom, Iris, Violet, Ambrox",
     price: 440000,
     description: "A signature fragrance of the American West. An open fire, the soft drift of smoke, where sensuality rises after the light has gone. It's a perfume that touches the vast and wild freedom of this country, with a rich layer of smoky woods, spices, and leathery undertones.",
-    image: "./assets/images/regenerated_image_1780295930617.jpg",
+    image: santalImage,
     mainNotes: ["Sandalwood", "Cedarwood", "Cardamom", "Violet", "Papyrus", "Leather"],
     character: "Woody, Smoky, Leathery",
     strength: "Eau de Parfum (Concentrated)",
@@ -20,7 +27,7 @@ export const SCENT_PRODUCTS: ScentProduct[] = [
     subtitle: "Matcha tea, Fig, Vetiver, Cedar woods",
     price: 440000,
     description: "Much more than a scent, Thé Matcha is an introverted fragrance. It is a moment of self, of quiet contemplation, offering a noble silence that is both warm and refreshing. A delicate accord of matcha green tea enriched by a soft, milky fig note, grounded by vetiver and structural cedar woods.",
-    image: "./assets/images/regenerated_image_1780295931994.jpg",
+    image: matchaImage,
     mainNotes: ["Matcha Accord", "Fig Note", "Bitter Orange", "Vetiver", "Cedarwood"],
     character: "Green, Woody, Tea-infused",
     strength: "Eau de Parfum (Clean / Intimate)",
@@ -33,7 +40,7 @@ export const SCENT_PRODUCTS: ScentProduct[] = [
     subtitle: "Bergamot, Fig, Bay leaves, Cedar wood",
     price: 440000,
     description: "An ode to the noble leaf of black tea and the craft that surrounds it. Thé Noir 29 combines depth and freshness, softness and strength through the permanent contrast between the light of bergamot, fig, and bay leaves and the depth of cedarwood, vetiver, and musk.",
-    image: "./assets/images/regenerated_image_1780295932621.jpg",
+    image: noirImage,
     mainNotes: ["Black Tea Extract", "Bergamot", "Fig", "Bay Leaves", "Cedarwood", "Vetiver", "Musk"],
     character: "Rich, Sensual, Fresh-Deep",
     strength: "Eau de Parfum (Multi-layered)",
@@ -46,7 +53,7 @@ export const SCENT_PRODUCTS: ScentProduct[] = [
     subtitle: "Ambrette, Jasmine, Moss, Musk",
     price: 440000,
     description: "An hypnotic and unique scent of ambergris, designed in collaboration with AnOther Magazine. Composed of ambroxan, a synthetic animal musk, making it an addictive dirty-fresh potion that blends seamlessly with your personal body heat, creating a mesmerizing second-skin aura.",
-    image: "./assets/images/regenerated_image_1780296385016.jpg",
+    image: anotherImage,
     mainNotes: ["Ambroxan", "Ambrette Seeds", "Jasmine Petals", "Green Moss", "Musk"],
     character: "Animalic, Musky, Second-skin",
     strength: "Eau de Parfum (Hypnotic)",
@@ -59,7 +66,7 @@ export const SCENT_PRODUCTS: ScentProduct[] = [
     subtitle: "Rose, Cumin, Vetiver, Cedar",
     price: 440000,
     description: "Designed with the aim of transforming the famous Grasse rose, a symbol of absolute femininity, into an assertively virile and unisex scent. The result is a model of duality: vibrant rose centifolia is rapidly backed by a chorus of warm, spicy, and woodsy notes like cumin, olibanum, cedar, and amber.",
-    image: "./assets/images/regenerated_image_1780296386004.jpg",
+    image: roseImage,
     mainNotes: ["Centifolia Rose", "Cumin Wood", "Vetiver", "Cedarwood", "Ambergris", "Olibanum"],
     character: "Floral, Warm Spicy, Woody",
     strength: "Eau de Parfum (Androgynous)",
@@ -72,7 +79,7 @@ export const SCENT_PRODUCTS: ScentProduct[] = [
     subtitle: "Bergamot, Grapefruit, Amber, Musk",
     price: 440000,
     description: "This dazzling perfume combines freshness, sweetness, and complexity with acrobatic talent. Bergamot is surrounded by delicate floral notes, sweet vanilla elements, amber warmth, and the sheer power of vetiver and musk, delivering an astonishing citrus vitality.",
-    image: "./assets/images/regenerated_image_1780296387085.jpg",
+    image: bergamoteImage,
     mainNotes: ["Bergamot", "Grapefruit", "Petitgrain", "Amber", "Musk", "Vetiver"],
     character: "Citrus, Fresh, Sparkling-Warm",
     strength: "Eau de Parfum (Energetic)",

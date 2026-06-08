@@ -1,5 +1,7 @@
 import { motion } from "motion/react";
 
+const heroImage = new URL("../assets/images/perfumer_lab_hero_1780294612666.png", import.meta.url).href;
+
 interface HeroProps {
   onExploreClick: () => void;
   onViewCollectionClick: () => void;
@@ -11,7 +13,7 @@ export default function Hero({ onExploreClick, onViewCollectionClick }: HeroProp
       {/* Immersive Lab Background Image */}
       <div className="absolute inset-0 z-0">
         <motion.img
-          src="./assets/images/perfumer_lab_hero_1780294612666.png"
+          src={heroImage}
           alt="Artisanal Fragrance Laboratory Formulation background"
           initial={{ scale: 1.05, opacity: 0.7 }}
           animate={{ scale: 1, opacity: 0.55 }}

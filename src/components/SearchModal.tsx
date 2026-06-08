@@ -4,6 +4,8 @@ import { X, Search, ChevronRight, Compass } from "lucide-react";
 import { SCENT_PRODUCTS } from "../data";
 import { ScentProduct } from "../types";
 
+const searchModalBackground = new URL("../assets/images/speckled_paper_1780458430027.png", import.meta.url).href;
+
 interface SearchModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -49,7 +51,7 @@ export default function SearchModal({ isOpen, onClose, onProductClick }: SearchM
         transition={{ duration: 0.25 }}
         className="relative max-w-2xl w-full border border-[#dbdad9] p-6 md:p-8 shadow-2xl overflow-hidden pointer-events-auto"
         style={{
-          backgroundImage: "url('./assets/images/speckled_paper_1780458430027.png')",
+          backgroundImage: `url(${searchModalBackground})`,
           backgroundSize: "320px",
           backgroundRepeat: "repeat",
           backgroundColor: "#fbf9f9"

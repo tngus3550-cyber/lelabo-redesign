@@ -1,5 +1,8 @@
 import { motion } from "motion/react";
 
+const speckledPaper = new URL("../assets/images/speckled_paper_1780458430027.png", import.meta.url).href;
+const discoveryImage = new URL("../assets/images/regenerated_image_1780295933719.webp", import.meta.url).href;
+
 interface DiscoveryBoxProps {
   onOpenQuiz: () => void;
   onOpenMixer: () => void;
@@ -11,7 +14,7 @@ export default function DiscoveryBox({ onOpenQuiz, onOpenMixer }: DiscoveryBoxPr
       id="discovery"
       className="py-2"
       style={{
-        backgroundImage: "url('./assets/images/speckled_paper_1780458430027.png')",
+        backgroundImage: `url(${speckledPaper})`,
         backgroundSize: "500px",
         backgroundRepeat: "repeat",
         backgroundColor: "#fbf9f9"
@@ -23,7 +26,7 @@ export default function DiscoveryBox({ onOpenQuiz, onOpenMixer }: DiscoveryBoxPr
           {/* Wooden workbench with discovery elements */}
           <div className="absolute inset-0 z-0">
             <img
-              src="./assets/images/regenerated_image_1780295933719.webp"
+              src={discoveryImage}
               alt="Artisanal glass dropper and bottles on work bench"
               className="w-full h-full object-cover filter contrast-105 brightness-90"
             />

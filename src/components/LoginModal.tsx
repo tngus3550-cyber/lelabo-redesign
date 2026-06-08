@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { X, Mail, Lock, User, CheckCircle2, ShieldAlert } from "lucide-react";
 
+const loginModalBg = new URL("../assets/images/speckled_paper_1780458430027.png", import.meta.url).href;
+
 interface LoginModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -127,7 +129,7 @@ export default function LoginModal({ isOpen, onClose, onLoginSuccess }: LoginMod
         transition={{ duration: 0.3 }}
         className="relative max-w-md w-full border border-[#dbdad9] p-8 shadow-2xl overflow-hidden pointer-events-auto"
         style={{
-          backgroundImage: "url('./assets/images/speckled_paper_1780458430027.png')",
+          backgroundImage: `url(${loginModalBg})`,
           backgroundSize: "350px",
           backgroundRepeat: "repeat",
           backgroundColor: "#fbf9f9"

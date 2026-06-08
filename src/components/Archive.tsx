@@ -67,12 +67,14 @@ export default function Archive({ onProductClick }: ArchiveProps) {
     }).format(price);
   };
 
+  const archiveBackground = new URL("../assets/images/speckled_paper_1780458430027.png", import.meta.url).href;
+
   return (
     <section
       id="archive"
       className="py-24 md:py-32 relative overflow-hidden"
       style={{
-        backgroundImage: "url('./assets/images/speckled_paper_1780458430027.png')",
+        backgroundImage: `url(${archiveBackground})`,
         backgroundSize: "500px",
         backgroundRepeat: "repeat",
         backgroundColor: "#faf9f8"

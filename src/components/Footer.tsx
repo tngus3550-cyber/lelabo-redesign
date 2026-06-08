@@ -1,3 +1,5 @@
+const footerBackground = new URL("../assets/images/speckled_paper_1780458430027.png", import.meta.url).href;
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -6,7 +8,7 @@ export default function Footer() {
       id="footer"
       className="border-t border-[#dbdad9] py-16 md:py-24 font-sans text-xs"
       style={{
-        backgroundImage: "url('./assets/images/speckled_paper_1780458430027.png')",
+        backgroundImage: `url(${footerBackground})`,
         backgroundSize: "500px",
         backgroundRepeat: "repeat",
         backgroundColor: "#fbf9f9"
