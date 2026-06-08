@@ -1,0 +1,6 @@
+{
+  "name": "ESSENCE LAB",
+  "description": "Artisanal fragrant discovery laboratory. Custom blended slow-crafted scents.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
