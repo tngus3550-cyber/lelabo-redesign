@@ -11,7 +11,7 @@ export default function DiscoveryBox({ onOpenQuiz, onOpenMixer }: DiscoveryBoxPr
       id="discovery"
       className="py-2"
       style={{
-        backgroundImage: "url('/assets/images/speckled_paper_1780458430027.png')",
+        backgroundImage: "url('./assets/images/speckled_paper_1780458430027.png')",
         backgroundSize: "500px",
         backgroundRepeat: "repeat",
         backgroundColor: "#fbf9f9"
@@ -23,7 +23,7 @@ export default function DiscoveryBox({ onOpenQuiz, onOpenMixer }: DiscoveryBoxPr
           {/* Wooden workbench with discovery elements */}
           <div className="absolute inset-0 z-0">
             <img
-              src="/assets/images/regenerated_image_1780295933719.webp"
+              src="./assets/images/regenerated_image_1780295933719.webp"
               alt="Artisanal glass dropper and bottles on work bench"
               className="w-full h-full object-cover filter contrast-105 brightness-90"
             />

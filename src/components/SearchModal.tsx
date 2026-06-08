@@ -49,7 +49,7 @@ export default function SearchModal({ isOpen, onClose, onProductClick }: SearchM
         transition={{ duration: 0.25 }}
         className="relative max-w-2xl w-full border border-[#dbdad9] p-6 md:p-8 shadow-2xl overflow-hidden pointer-events-auto"
         style={{
-          backgroundImage: "url('/assets/images/speckled_paper_1780458430027.png')",
+          backgroundImage: "url('./assets/images/speckled_paper_1780458430027.png')",
           backgroundSize: "320px",
           backgroundRepeat: "repeat",
           backgroundColor: "#fbf9f9"
