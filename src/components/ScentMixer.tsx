@@ -31,6 +31,51 @@ export default function ScentMixer({ isOpen, onClose, onAddCustomToCart }: Scent
   const [userName, setUserName] = useState("");
   const currentDate = new Date().toISOString().split('T')[0].replace(/-/g, "/");
 
+  const clampPercent = (value: number) => Math.min(100, Math.max(0, Math.round(value)));
+  const normalizeSliderValues = (updatedNotes: typeof notes) => {
+    const values = Object.values(updatedNotes).map(clampPercent);
+    const total = values.reduce((sum, v) => sum + v, 0);
+
+    if (total === 100) {
+      return {
+        woody: values[0],
+        citrus: values[1],
+        herbal: values[2],
+        floral: values[3],
+        musky: values[4]
+      };
+    }
+
+    const [woody, citrus, herbal, floral, musky] = values;
+    const sum = woody + citrus + herbal + floral + musky || 1;
+    const scaled = [
+      clampPercent((woody / sum) * 100),
+      clampPercent((citrus / sum) * 100),
+      clampPercent((herbal / sum) * 100),
+      clampPercent((floral / sum) * 100),
+      clampPercent((musky / sum) * 100)
+    ];
+
+    let normalized = {
+      woody: scaled[0],
+      citrus: scaled[1],
+      herbal: scaled[2],
+      floral: scaled[3],
+      musky: scaled[4]
+    };
+
+    const normalizedSum = Object.values(normalized).reduce((sum, v) => sum + v, 0);
+    const diff = 100 - normalizedSum;
+    if (diff !== 0) {
+      const maxKey = (Object.keys(normalized) as Array<keyof typeof normalized>).reduce((carry, key) => {
+        return normalized[key] > normalized[carry] ? key : carry;
+      }, "woody" as keyof typeof normalized);
+      normalized[maxKey] = clampPercent(normalized[maxKey] + diff);
+    }
+
+    return normalized;
+  };
+
   // Determine dynamic scent profile based on proportions
   const getDynamicName = () => {
     const sorted = (Object.entries(notes) as [keyof typeof notes, number][]).sort((a, b) => b[1] - a[1]);
@@ -58,24 +103,14 @@ export default function ScentMixer({ isOpen, onClose, onAddCustomToCart }: Scent
   };
 
   const handleSliderChange = (key: keyof typeof notes, val: number) => {
+    const clampedValue = clampPercent(val);
     setNotes((prev) => {
-      const updated = { ...prev, [key]: val };
-      const sum = (updated.woody + updated.citrus + updated.herbal + updated.floral + updated.musky) || 1;
-      
-      const rescale = {
-        woody: Math.round((updated.woody / sum) * 100),
-        citrus: Math.round((updated.citrus / sum) * 100),
-        herbal: Math.round((updated.herbal / sum) * 100),
-        floral: Math.round((updated.floral / sum) * 100),
-        musky: Math.round((updated.musky / sum) * 100)
-      };
-      
-      // Fix rounding errors
-      const newSum = rescale.woody + rescale.citrus + rescale.herbal + rescale.floral + rescale.musky;
-      if (newSum !== 100) {
-        rescale.woody += (100 - newSum);
+      const updated = { ...prev, [key]: clampedValue } as typeof notes;
+      const total = updated.woody + updated.citrus + updated.herbal + updated.floral + updated.musky;
+      if (total === 100) {
+        return updated;
       }
-      return rescale;
+      return normalizeSliderValues(updated);
     });
   };
 
@@ -140,8 +175,12 @@ export default function ScentMixer({ isOpen, onClose, onAddCustomToCart }: Scent
                   type="range"
                   min="0"
                   max="100"
-                  value={val}
-                  onChange={(e) => handleSliderChange(key as keyof typeof notes, parseInt(e.target.value))}
+                  step="1"
+                  value={clampPercent(val)}
+                  onChange={(e) => {
+                    const nextValue = Number(e.target.value);
+                    handleSliderChange(key as keyof typeof notes, Number.isNaN(nextValue) ? 0 : nextValue);
+                  }}
                   className="w-full h-1 bg-[#efeded] appearance-none cursor-pointer accent-black outline-none transition-all focus:outline-none"
                 />
               </div>
