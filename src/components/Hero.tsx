@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 
-const heroImage = new URL("../assets/images/perfumer_lab_hero_1780294612666.png", import.meta.url).href;
+const heroVideo = new URL("../assets/images/hero-video.mp4", import.meta.url).href;
 
 interface HeroProps {
   onExploreClick: () => void;
@@ -10,14 +10,14 @@ interface HeroProps {
 export default function Hero({ onExploreClick, onViewCollectionClick }: HeroProps) {
   return (
     <section id="hero" className="relative w-full h-[100vh] min-h-[600px] overflow-hidden bg-[#1b1c1c] text-white flex items-end pb-16 md:pb-24">
-      {/* Immersive Lab Background Image */}
+      {/* Immersive Lab Background Video */}
       <div className="absolute inset-0 z-0">
-        <motion.img
-          src={heroImage}
-          alt="Artisanal Fragrance Laboratory Formulation background"
-          initial={{ scale: 1.05, opacity: 0.7 }}
-          animate={{ scale: 1, opacity: 0.55 }}
-          transition={{ duration: 2.2, ease: "easeOut" }}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          src={heroVideo}
           className="w-full h-full object-cover filter contrast-115 brightness-95"
         />
         {/* Soft shadow gradients to elevate technical text legibility */}
