@@ -50,7 +50,7 @@ export default function DiscoveryBox({ onOpenQuiz, onOpenMixer }: DiscoveryBoxPr
               onClick={onOpenQuiz}
               className="border border-white hover:bg-white hover:text-black transition-all duration-300 text-xs uppercase tracking-widest font-mono font-bold px-8 py-4 bg-transparent cursor-pointer"
             >
-              자세히 보기
+              Discover More
             </button>
           </div>
         </div>
@@ -76,7 +76,7 @@ export default function DiscoveryBox({ onOpenQuiz, onOpenMixer }: DiscoveryBoxPr
               onClick={onOpenQuiz}
               className="border border-[#1b1c1c]/30 text-[#1b1c1c] hover:bg-black hover:text-white hover:border-black transition-all text-xs uppercase tracking-widest font-mono px-8 py-3.5 cursor-pointer"
             >
-              맞춤 보틀 제작
+              Formulate Custom Bottle
             </button>
           </div>
         </div>
