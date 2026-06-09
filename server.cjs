@@ -61,36 +61,36 @@ app.post("/api/formulate", async (req, res) => {
     const textVal = answers?.texture || "linen";
     const presVal = answers?.presence || "intimate";
     let scentName = "SANTAL 31";
-    let archetype = "The Silent Alchemist";
-    let story = "A quiet, slow-breathing woody fragrance representing absolute presence and structural solace. It carries notes of old redwoods, warm linen, and intimate embers.";
+    let archetype = "\uC870\uC6A9\uD55C \uC5F0\uAE08\uC220\uC0AC";
+    let story = "\uACE0\uC694\uD558\uAC8C \uC228\uC26C\uB294 \uC6B0\uB514 \uD5A5\uC774 \uC874\uC7AC\uAC10\uC744 \uBD80\uB4DC\uB7FD\uAC8C \uB4DC\uB7EC\uB0C5\uB2C8\uB2E4. \uC624\uB798\uB41C \uB808\uB4DC\uC6B0\uB4DC\uC640 \uB530\uB73B\uD55C \uB9B0\uB128, \uCE5C\uBC00\uD55C \uC794\uD5A5\uC774 \uC5B4\uC6B0\uB7EC\uC9D1\uB2C8\uB2E4.";
     let topNotes = ["Cardamom", "Bergamot"];
     let heartNotes = ["Smoky Cedarwood", "Iris Petals"];
     let baseNotes = ["Warm Amber", "Ambroxan", "Papyrus"];
-    let advice = "Deploy to warm pulse points. This formula merges with your distinct skin chemistry to reveal a personalized, woody scent envelope.";
+    let advice = "\uB530\uB73B\uD55C \uB9E5\uBC15 \uBD80\uC704\uC5D0 \uBC1C\uB77C\uC8FC\uC138\uC694. \uD53C\uBD80 \uD654\uD559\uACFC \uC5B4\uC6B0\uB7EC\uC838 \uB098\uB9CC\uC758 \uC6B0\uB514\uD55C \uC794\uD5A5\uC774 \uCC28\uBD84\uD788 \uC644\uC131\uB429\uB2C8\uB2E4.";
     if (envVal === "citrus") {
       scentName = "BERGAMOTE 18";
-      archetype = "The Coastal Nomad";
-      story = "A dazzling and sparkling citrus vitality that carries whispers of salted sea cliffs, warm amber sands, and fresh-pressed sunlit orange peel.";
+      archetype = "\uD574\uC548\uC758 \uC720\uBAA9\uBBFC";
+      story = "\uC9ED\uC9E4\uD55C \uD574\uC548 \uC808\uBCBD\uACFC \uB530\uB73B\uD55C \uC570\uBC84 \uBE5B \uBAA8\uB798, \uD587\uC0B4\uC5D0 \uC555\uCC29\uB41C \uC624\uB80C\uC9C0 \uAECD\uC9C8\uC758 \uC0DD\uB3D9\uAC10\uC774 \uAC10\uB3C4\uB294 \uC2DC\uD2B8\uB7EC\uC2A4 \uD5A5\uAE30\uC785\uB2C8\uB2E4.";
       topNotes = ["Calabrian Bergamot", "Bitter Grapefruit"];
       heartNotes = ["Petitgrain", "Jasmine Accord"];
       baseNotes = ["Salty Vetiver", "Clean White Musk"];
-      advice = "Apply liberally following a morning shower. Prompts a bright, refreshing cloud of intellectual energy.";
+      advice = "\uC544\uCE68 \uC0E4\uC6CC \uD6C4 \uB109\uB109\uD788 \uBC1C\uB77C\uC8FC\uC138\uC694. \uB9D1\uACE0 \uC0C1\uCF8C\uD55C \uC9C0\uC801\uC778 \uC5D0\uB108\uC9C0\uAC00 \uBD80\uB4DC\uB7FD\uAC8C \uD37C\uC9D1\uB2C8\uB2E4.";
     } else if (envVal === "matcha") {
       scentName = "MATCHA 22";
-      archetype = "The Quiet Meditator";
-      story = "An introverted, milky green tea solace inspired by foggy mornings inside rain-dampened glasshouses. It encourages moments of absolute presence.";
+      archetype = "\uACE0\uC694\uD55C \uBA85\uC0C1\uAC00";
+      story = "\uBE44\uC5D0 \uC816\uC740 \uC720\uB9AC\uC628\uC2E4 \uC548\uC758 \uC548\uAC1C \uB080 \uC544\uCE68\uCC98\uB7FC, \uC6B0\uC720\uBE5B \uB179\uCC28\uC758 \uC704\uB85C\uC640 \uC628\uD654\uD55C \uCE68\uBB35\uC744 \uC804\uD569\uB2C8\uB2E4.";
       topNotes = ["Matcha Powder", "Bitter Orange"];
       heartNotes = ["Fleshy Sweet Fig", "Steaming Water Accord"];
       baseNotes = ["Rich Vetiver", "Sandalwood", "Cedarwood"];
-      advice = "Apply to the base of the neck. Offers a noble, soft silence that rests close to you.";
+      advice = "\uBAA9 \uB4B7\uBD80\uBD84\uC5D0 \uBC1C\uB77C\uC8FC\uC138\uC694. \uAC00\uAE4C\uC774 \uBA38\uBB34\uB974\uB294 \uBD80\uB4DC\uB7EC\uC6B4 \uACE0\uC694\uAC00 \uC624\uB798 \uB0A8\uC2B5\uB2C8\uB2E4.";
     } else if (envVal === "smoky") {
       scentName = "NOIR 27";
-      archetype = "The Velvet Shadow";
-      story = "A deep, hypnotic tribute to midnight tobacco leaves, old library leather, and black tea steam. It bridges raw power with exceptional softness.";
+      archetype = "\uBCA8\uBCB3 \uADF8\uB9BC\uC790";
+      story = "\uD55C\uBC24\uC758 \uB2F4\uBC30\uC78E\uACFC \uC624\uB798\uB41C \uB3C4\uC11C\uAD00 \uAC00\uC8FD, \uAC80\uC740 \uCC28\uC758 \uAE40\uC774 \uC5B4\uC6B0\uB7EC\uC9C4 \uAE4A\uACE0 \uB9E4\uD639\uC801\uC778 \uD5A5\uC785\uB2C8\uB2E4. \uAC15\uB82C\uD568\uACFC \uBD80\uB4DC\uB7EC\uC6C0\uC774 \uACF5\uC874\uD569\uB2C8\uB2E4.";
       topNotes = ["Bergamot", "Black Tea Extract"];
       heartNotes = ["Suede Leather", "Dry Fig", "Bay Leaves"];
       baseNotes = ["Damp Vetiver", "Cedarwood", "Dark Sweet Musk"];
-      advice = "Apply directly to collarbones before nightfall. Develops rich, complex sillage over 10 hours.";
+      advice = "\uD574\uC9C8\uB158\uC5D0 \uC1C4\uACE8 \uBD80\uC704\uC5D0 \uBC1C\uB77C\uC8FC\uC138\uC694. 10\uC2DC\uAC04 \uC774\uC0C1 \uD48D\uBD80\uD558\uACE0 \uBCF5\uD569\uC801\uC778 \uC794\uD5A5\uC774 \uC644\uC131\uB429\uB2C8\uB2E4.";
     }
     return { scentName, archetype, story, topNotes, heartNotes, baseNotes, advice };
   };
