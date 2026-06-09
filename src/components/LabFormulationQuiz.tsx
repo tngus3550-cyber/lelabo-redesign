@@ -102,12 +102,12 @@ export default function LabFormulationQuiz({ isOpen, onClose, onAddCustomToCart 
           { name: apiResponse.topNotes[0], percentage: "25%" },
           { name: apiResponse.heartNotes[0], percentage: "15%" },
           { name: apiResponse.baseNotes[0], percentage: "15%" },
-          { name: "Organic Emulsion Core (SOHO-9 Base)", percentage: "45%" }
+          { name: "유기농 에멀전 코어 (SOHO-9 기본재)", percentage: "45%" }
         ],
         wearAdvice: apiResponse.advice || apiResponse.story,
         labelName: userName.toUpperCase(),
         dateCreated: currentDate,
-        location: "SOHO LAB, NEW YORK",
+        location: "뉴욕 소호 연구소",
         notes: apiResponse.story
       });
     } else {
@@ -411,7 +411,7 @@ export default function LabFormulationQuiz({ isOpen, onClose, onAddCustomToCart 
                   </div>
 
                   <div className="mt-4 border-t border-[#b2afaa] pt-2.5 text-center text-[7px] text-gray-500 select-none">
-                    * HAND-BOTTLED FRESH IN OUR NYC COMPLEX LAB COUNTER *
+                    • 뉴욕 연구소에서 신선하게 손으로 채워집니다 •
                   </div>
                 </div>
 
