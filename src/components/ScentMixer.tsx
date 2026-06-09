@@ -31,49 +31,81 @@ export default function ScentMixer({ isOpen, onClose, onAddCustomToCart }: Scent
   const [userName, setUserName] = useState("");
   const currentDate = new Date().toISOString().split('T')[0].replace(/-/g, "/");
 
-  const clampPercent = (value: number) => Math.min(100, Math.max(0, Math.round(value)));
-  const normalizeSliderValues = (updatedNotes: typeof notes) => {
-    const values = Object.values(updatedNotes).map(clampPercent);
-    const total = values.reduce((sum, v) => sum + v, 0);
+  // Simple clamping: ensures value is always between 0 and 100
+  const clampPercent = (value: number): number => {
+    const num = Number(value);
+    if (!Number.isFinite(num)) return 0;
+    return Math.min(100, Math.max(0, Math.round(num)));
+  };
 
-    if (total === 100) {
-      return {
-        woody: values[0],
-        citrus: values[1],
-        herbal: values[2],
-        floral: values[3],
-        musky: values[4]
+  // Proportional distribution: adjust all other values to maintain 100% total
+  const handleSliderChange = (changedKey: keyof typeof notes, newValue: number) => {
+    const clampedValue = clampPercent(newValue);
+    
+    setNotes((prev) => {
+      // If the new value equals the current value, no change needed
+      if (prev[changedKey] === clampedValue) {
+        return prev;
+      }
+
+      // Calculate the change amount
+      const change = clampedValue - prev[changedKey];
+      
+      // Create a new state object
+      const updated = { ...prev, [changedKey]: clampedValue };
+      
+      // Get all other keys
+      const otherKeys = (Object.keys(updated) as Array<keyof typeof notes>).filter(k => k !== changedKey);
+      
+      // Calculate total of other values
+      const otherTotal = otherKeys.reduce((sum, k) => sum + updated[k], 0);
+      
+      // If others sum to 0, distribute the remaining proportionally by default split
+      if (otherTotal === 0) {
+        const evenSplit = Math.floor((100 - clampedValue) / otherKeys.length);
+        const remainder = (100 - clampedValue) % otherKeys.length;
+        otherKeys.forEach((k, idx) => {
+          updated[k] = evenSplit + (idx < remainder ? 1 : 0);
+        });
+      } else {
+        // Distribute the change proportionally to others
+        const ratio = (otherTotal - change) / otherTotal;
+        otherKeys.forEach((k) => {
+          const newOtherValue = Math.round(updated[k] * ratio);
+          updated[k] = clampPercent(newOtherValue);
+        });
+      }
+
+      // Ensure total is exactly 100%
+      const total = Object.values(updated).reduce((sum, v) => sum + v, 0);
+      const diff = 100 - total;
+      
+      if (diff !== 0) {
+        // Find the value with the largest amount and adjust it
+        let maxKey = changedKey;
+        let maxValue = updated[changedKey];
+        
+        otherKeys.forEach((k) => {
+          if (updated[k] > maxValue) {
+            maxValue = updated[k];
+            maxKey = k;
+          }
+        });
+        
+        updated[maxKey] = clampPercent(updated[maxKey] + diff);
+      }
+
+      // Final validation: clamp all values
+      const final = {
+        woody: clampPercent(updated.woody),
+        citrus: clampPercent(updated.citrus),
+        herbal: clampPercent(updated.herbal),
+        floral: clampPercent(updated.floral),
+        musky: clampPercent(updated.musky)
       };
-    }
 
-    const [woody, citrus, herbal, floral, musky] = values;
-    const sum = woody + citrus + herbal + floral + musky || 1;
-    const scaled = [
-      clampPercent((woody / sum) * 100),
-      clampPercent((citrus / sum) * 100),
-      clampPercent((herbal / sum) * 100),
-      clampPercent((floral / sum) * 100),
-      clampPercent((musky / sum) * 100)
-    ];
-
-    let normalized = {
-      woody: scaled[0],
-      citrus: scaled[1],
-      herbal: scaled[2],
-      floral: scaled[3],
-      musky: scaled[4]
-    };
-
-    const normalizedSum = Object.values(normalized).reduce((sum, v) => sum + v, 0);
-    const diff = 100 - normalizedSum;
-    if (diff !== 0) {
-      const maxKey = (Object.keys(normalized) as Array<keyof typeof normalized>).reduce((carry, key) => {
-        return normalized[key] > normalized[carry] ? key : carry;
-      }, "woody" as keyof typeof normalized);
-      normalized[maxKey] = clampPercent(normalized[maxKey] + diff);
-    }
-
-    return normalized;
+      return final;
+    });
   };
 
   // Determine dynamic scent profile based on proportions
@@ -100,18 +132,6 @@ export default function ScentMixer({ isOpen, onClose, onAddCustomToCart }: Scent
       return { name: `ROSE DU SACRE ${indexNumber}`, char: "Floral Duality, Warm Spicy Rose" };
     }
     return { name: `THE VERT VERBENA ${indexNumber}`, char: "Fresh Green, Herbaceous Tea" };
-  };
-
-  const handleSliderChange = (key: keyof typeof notes, val: number) => {
-    const clampedValue = clampPercent(val);
-    setNotes((prev) => {
-      const updated = { ...prev, [key]: clampedValue } as typeof notes;
-      const total = updated.woody + updated.citrus + updated.herbal + updated.floral + updated.musky;
-      if (total === 100) {
-        return updated;
-      }
-      return normalizeSliderValues(updated);
-    });
   };
 
   const profile = getDynamicName();
@@ -165,26 +185,31 @@ export default function ScentMixer({ isOpen, onClose, onAddCustomToCart }: Scent
           </div>
 
           <div className="space-y-4 font-mono text-[10px]">
-            {Object.entries(notes).map(([key, val]) => (
-              <div key={key} className="space-y-1.5 uppercase">
-                <div className="flex justify-between items-baseline font-semibold">
-                  <span className="text-[#1b1c1c] tracking-widest">{key} Essences</span>
-                  <span className="text-[#747878]">{val}%</span>
+            {Object.entries(notes).map(([key, val]) => {
+              const displayValue = clampPercent(val);
+              return (
+                <div key={key} className="space-y-1.5 uppercase">
+                  <div className="flex justify-between items-baseline font-semibold">
+                    <span className="text-[#1b1c1c] tracking-widest">{key} Essences</span>
+                    <span className="text-[#747878]">{displayValue}%</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    step="1"
+                    value={displayValue}
+                    onChange={(e) => {
+                      const inputValue = parseInt(e.target.value, 10);
+                      if (!Number.isNaN(inputValue)) {
+                        handleSliderChange(key as keyof typeof notes, inputValue);
+                      }
+                    }}
+                    className="w-full h-1 bg-[#efeded] appearance-none cursor-pointer accent-black outline-none transition-all focus:outline-none"
+                  />
                 </div>
-                <input
-                  type="range"
-                  min="0"
-                  max="100"
-                  step="1"
-                  value={clampPercent(val)}
-                  onChange={(e) => {
-                    const nextValue = Number(e.target.value);
-                    handleSliderChange(key as keyof typeof notes, Number.isNaN(nextValue) ? 0 : nextValue);
-                  }}
-                  className="w-full h-1 bg-[#efeded] appearance-none cursor-pointer accent-black outline-none transition-all focus:outline-none"
-                />
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Recipient Input */}
