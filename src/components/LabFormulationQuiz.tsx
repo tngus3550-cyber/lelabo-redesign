@@ -27,7 +27,7 @@ export default function LabFormulationQuiz({ isOpen, onClose, onAddCustomToCart 
   const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
 
   // Formulation outcomes elements from backend / fallback
-  const [loadingStepText, setLoadingStepText] = useState("PROCURING RAW VETIVER COMPOUNDS...");
+  const [loadingStepText, setLoadingStepText] = useState("조향 준비 중...");
   const [formulationResult, setFormulationResult] = useState<any>(null);
   const [isLoadingScent, setIsLoadingScent] = useState(false);
 
@@ -62,11 +62,11 @@ export default function LabFormulationQuiz({ isOpen, onClose, onAddCustomToCart 
     setIsLoadingScent(true);
 
     const simulationSteps = [
-      "🔬 TARING DIGITAL HIGH-PRECISION DISPENSERS...",
-      "🧪 MEASURING PLANT CONCENTRATIONS (ESSENTIAL COILS)...",
-      "🧬 PRE-HOMOGENIZING ESSENCE BASES (ALCOHOL EXTRACT)...",
-      "⚗️ COLD FILTERING BATCH RESIDUES UNDER VACUUM PRESSURE...",
-      "🖨️ TYPESETTING HEIRLOOM ANALOG PRINTER DRUM FOR LABELING..."
+      "🔬 디지털 정밀 분주기 초기화 중...",
+      "🧪 식물 농도 측정 중...",
+      "🧬 에센스 기반 혼합 전 준비 중...",
+      "⚗️ 진공 압력 하에서 배치 여과 중...",
+      "🖨️ 라벨링용 아날로그 프린터 준비 중..."
     ];
 
     // Trigger full API request in parallel
@@ -176,19 +176,19 @@ export default function LabFormulationQuiz({ isOpen, onClose, onAddCustomToCart 
               <div className="space-y-6">
                 <div className="text-center sm:text-left">
                   <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-[#747878]">
-                    VIRTUAL SCENT DISCOVERY CODY
+                    가상 향기 탐색
                   </span>
                   <h3 className="text-2xl font-semibold tracking-tight text-[#1b1c1c] mt-2">
-                    Initiate Your Formulation
+                    조향 시작하기
                   </h3>
                   <p className="text-xs text-[#444748] mt-3 font-light leading-relaxed">
-                    조향 단계를 개시합니다. 세상에 존재하지 않았던 당신만을 위한 고유한 에멀젼을 배합하기 위해, 하단에 라벨에 새겨질 이름을 지정해 주십시오. (영문 추천)
+                    조향 단계를 개시합니다. 세상에 존재하지 않았던 당신만을 위한 고유한 향을 만들기 위해, 아래에 라벨에 새겨질 이름을 입력해주세요.
                   </p>
                 </div>
 
                 <div className="space-y-2 pt-4">
                   <label htmlFor="quiz-name-input" className="text-[10px] font-mono uppercase tracking-widest text-[#1b1c1c] font-bold block">
-                    Your Name / Label Marker
+                    이름 / 라벨
                   </label>
                   <input
                     id="quiz-name-input"
@@ -196,11 +196,11 @@ export default function LabFormulationQuiz({ isOpen, onClose, onAddCustomToCart 
                     maxLength={15}
                     value={userName}
                     onChange={(e) => setUserName(e.target.value)}
-                    placeholder="e.g. ELEANOR"
+                    placeholder="예: ELEANOR"
                     className="w-full bg-[#fbf9f9] border border-[#dbdad9] focus:border-black font-mono tracking-widest text-[#1b1c1c] focus:outline-none focus:ring-0 p-3.5 text-sm uppercase"
                   />
                   <span className="text-[9px] font-mono text-[#747878] block text-right">
-                    {15 - userName.length} characters left
+                    {15 - userName.length} 글자 남음
                   </span>
                 </div>
               </div>
@@ -211,7 +211,7 @@ export default function LabFormulationQuiz({ isOpen, onClose, onAddCustomToCart 
                   onClick={() => setStep("questions")}
                   className="bg-black text-white hover:bg-neutral-800 disabled:bg-[#efeded] disabled:text-[#747878] py-3.5 px-8 font-mono text-xs uppercase tracking-widest transition-all cursor-pointer flex items-center"
                 >
-                  Configure Profile
+                  프로필 구성
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </button>
               </div>
@@ -231,7 +231,7 @@ export default function LabFormulationQuiz({ isOpen, onClose, onAddCustomToCart 
                 {/* Progress Indicators */}
                 <div className="flex items-center justify-between border-b border-[#e9e8e7] pb-3 mb-6">
                   <span className="text-[10px] font-mono uppercase tracking-widest text-[#747878]">
-                    CRITICAL METRIC {currentQuestionIdx + 1} OF {QUIZ_QUESTIONS.length}
+                    질문 {currentQuestionIdx + 1} / {QUIZ_QUESTIONS.length}
                   </span>
                   <div className="flex gap-1.5">
                     {QUIZ_QUESTIONS.map((_, idx) => (
@@ -295,14 +295,14 @@ export default function LabFormulationQuiz({ isOpen, onClose, onAddCustomToCart 
                   className="border border-[#dbdad9] text-[#1b1c1c] hover:bg-neutral-100 py-3 px-6 font-mono text-xs uppercase tracking-widest cursor-pointer flex items-center"
                 >
                   <ArrowLeft className="w-3.5 h-3.5 mr-2" />
-                  Back
+                  이전
                 </button>
                 <button
                   disabled={!answers[currentQuestion.id]}
                   onClick={handleNextQuestion}
                   className="bg-black text-white hover:bg-neutral-800 disabled:bg-[#efeded] disabled:text-[#747878] py-3.5 px-8 font-mono text-xs uppercase tracking-widest transition-all cursor-pointer flex items-center"
                 >
-                  {currentQuestionIdx === QUIZ_QUESTIONS.length - 1 ? "Sync with Gemini" : "Continue"}
+                  {currentQuestionIdx === QUIZ_QUESTIONS.length - 1 ? "향기 생성" : "다음"}
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </button>
               </div>
@@ -327,7 +327,7 @@ export default function LabFormulationQuiz({ isOpen, onClose, onAddCustomToCart 
               </motion.div>
 
               <span className="text-[10px] font-mono tracking-[0.2em] text-[#747878] uppercase">
-                CHEMISTRY SYNTHESIS PIPELINES ACTIVE
+                합성 파이프라인 작동 중
               </span>
               <p className="text-xs font-mono font-bold tracking-widest text-[#1b1c1c] max-w-sm font-bold uppercase transition-all duration-300">
                 {loadingStepText}
@@ -355,13 +355,13 @@ export default function LabFormulationQuiz({ isOpen, onClose, onAddCustomToCart 
               <div className="space-y-6 overflow-y-auto max-h-[60vh] pr-1 scrollbar-thin">
                 <div className="text-center">
                   <span className="text-[9px] font-mono tracking-widest bg-emerald-50 text-emerald-800 border border-emerald-200/50 py-1 px-3 uppercase rounded-full">
-                    ✔ FORMULATION REGISTERED SUCCESSFULLY
+                    ✔ 조향이 완료되었습니다
                   </span>
                   <h3 className="text-2xl font-bold tracking-tight text-black uppercase mt-3.5 mb-1 text-center font-sans">
                     {formulationResult.baseScent}
                   </h3>
                   <span className="text-[10px] font-mono uppercase tracking-widest text-[#747878]">
-                    ARCHETYPE: {formulationResult.archetype}
+                    아키타입: {formulationResult.archetype}
                   </span>
                 </div>
 
@@ -371,30 +371,30 @@ export default function LabFormulationQuiz({ isOpen, onClose, onAddCustomToCart 
                     {formulationResult.formulaId}
                   </div>
                   <div className="border-b border-[#b2afaa] pb-2 font-bold tracking-wider text-black text-center text-[10px]">
-                    ESSENCE LAB MEMORANDUM
+                    에센스 연구 기록
                   </div>
 
                   <div className="mt-4 grid grid-cols-2 gap-3 pb-3 border-b border-[#b2afaa]/60">
                     <div>
-                      <span className="text-gray-500 block text-[7px] font-semibold">FORMULA BATCH NO:</span>
+                      <span className="text-gray-500 block text-[7px] font-semibold">배치 번호:</span>
                       <span className="font-bold text-black">{formulationResult.formulaId}-RAW-2026</span>
                     </div>
                     <div>
-                      <span className="text-gray-500 block text-[7px] font-semibold">VOLUME STABILIZER:</span>
+                      <span className="text-gray-500 block text-[7px] font-semibold">농도:</span>
                       <span className="font-bold text-black">{formulationResult.concentration}</span>
                     </div>
                     <div>
-                      <span className="text-gray-500 block text-[7px] font-semibold">ORIGIN BARREL:</span>
-                      <span className="font-bold text-[#444748]">COMPLEX {formulationResult.location}</span>
+                      <span className="text-gray-500 block text-[7px] font-semibold">원산지:</span>
+                      <span className="font-bold text-[#444748]">{formulationResult.location}</span>
                     </div>
                     <div>
-                      <span className="text-gray-500 block text-[7px] font-semibold">LAUNCH DATE:</span>
+                      <span className="text-gray-500 block text-[7px] font-semibold">제조일:</span>
                       <span className="font-bold text-[#444748]">{formulationResult.dateCreated}</span>
                     </div>
                   </div>
 
                   <div className="mt-3 space-y-1.5 pb-3.5 border-b border-[#b2afaa]/60">
-                    <span className="text-gray-500 block text-[7px] font-semibold">INGREDIENTS COMPOUND PROPORTIONS:</span>
+                    <span className="text-gray-500 block text-[7px] font-semibold">원료 구성 비율:</span>
                     {formulationResult.ingredients.map((ing: any) => (
                       <div key={ing.name} className="flex justify-between font-mono">
                         <span className="text-[#333] font-medium">{ing.name}</span>
@@ -404,7 +404,7 @@ export default function LabFormulationQuiz({ isOpen, onClose, onAddCustomToCart 
                   </div>
 
                   <div className="mt-3 leading-normal">
-                    <span className="text-gray-500 block text-[7px] font-semibold">OLFACTORY SOUL NARRATIVE:</span>
+                    <span className="text-gray-500 block text-[7px] font-semibold">향기 서사:</span>
                     <p className="mt-1 normal-case leading-relaxed font-sans text-[10.5px] tracking-wide text-[#333] font-light">
                       {formulationResult.notes}
                     </p>
@@ -417,7 +417,7 @@ export default function LabFormulationQuiz({ isOpen, onClose, onAddCustomToCart 
 
                 {/* Scent integration wearer review block */}
                 <div className="bg-[#f5f3f3] p-4 text-[11px] leading-relaxed border border-[#dbdad9] font-light text-[#444748]">
-                  <strong className="text-xs text-[#1b1c1c] font-semibold block mb-1">Wearing Directive:</strong>
+                  <strong className="text-xs text-[#1b1c1c] font-semibold block mb-1">착용 안내:</strong>
                   {formulationResult.wearAdvice}
                 </div>
               </div>
@@ -429,14 +429,14 @@ export default function LabFormulationQuiz({ isOpen, onClose, onAddCustomToCart 
                   className="flex items-center text-[#747878] hover:text-black underline underline-offset-4 text-xs tracking-wider cursor-pointer"
                 >
                   <RefreshCw className="w-3.5 h-3.5 mr-1.5" />
-                  Formulate Again
+                  다시 조향하기
                 </button>
                 <button
                   onClick={handleAddToCart}
                   className="bg-black text-white hover:bg-neutral-800 transition-colors py-3.5 px-6 text-xs uppercase tracking-widest font-semibold flex items-center cursor-pointer font-bold"
                 >
                   <ShoppingBag className="w-4 h-4 mr-2" />
-                  Order Custom Bottle
+                  맞춤 보틀 주문하기
                 </button>
               </div>
             </motion.div>

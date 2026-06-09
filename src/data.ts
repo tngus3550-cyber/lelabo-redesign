@@ -91,42 +91,42 @@ export const SCENT_PRODUCTS: ScentProduct[] = [
 export const QUIZ_QUESTIONS: ScentQuizQuestion[] = [
   {
     id: "environment",
-    question: "Where do you find absolute quiet and presence?",
+    question: "어디에서 가장 고요함과 존재감을 느끼나요?",
     options: [
-      { label: "Wood Cabin", value: "woody", description: "A remote cedar cabin heated by a woodfire amidst towering pines." },
-      { label: "Coastal Grove", value: "citrus", description: "Sun-drenched wild orange and bergamot trees overlooking a salty sea cliff." },
-      { label: "Quiet Greenhouse", value: "matcha", description: "A forgotten glasshouse after rain, rich with damp moss, soil, and steaming tea." },
-      { label: "Midnight Lounge", value: "smoky", description: "A dimly lit library or lounge with leather armchairs, smoke, and old books." }
+      { label: "나무 오두막", value: "woody", description: "거대한 소나무 숲 속에서 장작난로로 데워진 삼나무 오두막." },
+      { label: "해안 숲", value: "citrus", description: "짭짤한 바다 절벽을 바라보는 햇빛 가득 오렌지와 베르가못 나무." },
+      { label: "고요한 온실", value: "matcha", description: "비 온 뒤의 유리온실, 촉촉한 이끼와 흙, 김이 나는 차의 향." },
+      { label: "한밤의 라운지", value: "smoky", description: "가죽 안락의자, 연기, 오래된 책이 어우러진 은은한 공간." }
     ]
   },
   {
     id: "texture",
-    question: "Which textured material fits your sensory comfort?",
+    question: "어떤 질감이 감각적 안락함과 가장 잘 맞나요?",
     options: [
-      { label: "Raw Linen", value: "linen", description: "Course, breathable hand-woven linen that feels crisp, raw, and pure." },
-      { label: "Worn Suede", value: "suede", description: "Soft, heavy vintage leather that retains personal history and quiet warmth." },
-      { label: "Misted Glass", value: "glass", description: "Cool, precise laboratory vials carrying condensation and sharp clarity." },
-      { label: "Damp Moss", value: "moss", description: "Spongy, wet forest moss filled with organic depth and living history." }
+      { label: "린넨", value: "linen", description: "거칠고 통기성 좋은 손으로 짠 린넨, 상쾌하고 순수한 느낌." },
+      { label: "스웨이드", value: "suede", description: "부드럽고 묵직한 빈티지 가죽, 개인적인 역사와 따뜻함을 품은." },
+      { label: "물방울 맺힌 유리", value: "glass", description: "차가운 연구용 유리병, 응결된 물방울과 선명한 클리어함." },
+      { label: "촉촉한 이끼", value: "moss", description: "생기있는 깊이와 자연의 역사를 담은 푹신한 숲속 이끼." }
     ]
   },
   {
     id: "presence",
-    question: "How do you want your fragrance to speak to others?",
+    question: "당신의 향기는 타인에게 어떻게 전달되길 하나요?",
     options: [
-      { label: "A Private Secret", value: "intimate", description: "A subtle skin-scent only discovered by those you permit to draw very close." },
-      { label: "An Enigmatic Trail", value: "mysterious", description: "A complex, shifting aura that leaves an intriguing trail as you walk by." },
-      { label: "Clean Clarity", value: "vibrant", description: "A sharp, uplifting beam of fresh intellectual force and natural focus." },
-      { label: "A Warm Embrace", value: "magnetic", description: "A deep, resinous wood-and-amber glow that feels extremely comforting." }
+      { label: "나만의 비밀", value: "intimate", description: "가까운 사람만 발견할 수 있는 은은한 스킨 센트." },
+      { label: "신비한 잔향", value: "mysterious", description: "걸을 때마다 흥미로운 흔적을 남기는 복합적인 오라." },
+      { label: "깨끗한 선명함", value: "vibrant", description: "신선하고 지적인 힘이 느껴지는 또렷한 빔." },
+      { label: "따뜻한 포옹", value: "magnetic", description: "깊고 수지 같은 우드 앰버의 포근함." }
     ]
   },
   {
     id: "purpose",
-    question: "What is the primary intention of this formulation?",
+    question: "이 조합의 주된 목적은 무엇인가요?",
     options: [
-      { label: "Intellectual Grounding", value: "grounding", description: "For internal focus, solitary writing, or calm critical thinking." },
-      { label: "Creative Expression", value: "creative", description: "A spark of sensory texture to outline ideas in a minimalist studio." },
-      { label: "Metropolitan Sights", value: "urban", description: "A protective, high-contrast shield against concrete grids and dense transit." },
-      { label: "Gathering and Intimacy", value: "gathering", description: "To share in slow conversations in cozy candlelit rooms." }
+      { label: "지적 집중", value: "grounding", description: "내면의 집중, 고요한 글쓰기, 차분한 사유를 위한." },
+      { label: "감각적 표현", value: "creative", description: "미니멀 스튜디오에서 아이디어를 그릴 감각적 스파크." },
+      { label: "도시 감각", value: "urban", description: "콘크리트와 빽빽한 이동 환경을 지나도 보호해주는 듯한." },
+      { label: "모임과 친밀감", value: "gathering", description: "캔들빛 방에서 천천히 대화를 나누며 함께하는 시간." }
     ]
   }
 ];

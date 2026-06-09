@@ -50,37 +50,37 @@ app.post("/api/formulate", async (req: express.Request, res: express.Response): 
     const presVal = answers?.presence || "intimate";
 
     let scentName = "SANTAL 31";
-    let archetype = "The Silent Alchemist";
-    let story = "A quiet, slow-breathing woody fragrance representing absolute presence and structural solace. It carries notes of old redwoods, warm linen, and intimate embers.";
+    let archetype = "조용한 연금술사";
+    let story = "고요하게 숨쉬는 우디 향이 존재감을 부드럽게 드러냅니다. 오래된 레드우드와 따뜻한 린넨, 친밀한 잔향이 어우러집니다.";
     let topNotes = ["Cardamom", "Bergamot"];
     let heartNotes = ["Smoky Cedarwood", "Iris Petals"];
     let baseNotes = ["Warm Amber", "Ambroxan", "Papyrus"];
-    let advice = "Deploy to warm pulse points. This formula merges with your distinct skin chemistry to reveal a personalized, woody scent envelope.";
+    let advice = "따뜻한 맥박 부위에 발라주세요. 피부 화학과 어우러져 나만의 우디한 잔향이 차분히 완성됩니다.";
 
     if (envVal === "citrus") {
       scentName = "BERGAMOTE 18";
-      archetype = "The Coastal Nomad";
-      story = "A dazzling and sparkling citrus vitality that carries whispers of salted sea cliffs, warm amber sands, and fresh-pressed sunlit orange peel.";
+      archetype = "해안의 유목민";
+      story = "짭짤한 해안 절벽과 따뜻한 앰버 빛 모래, 햇살에 압착된 오렌지 껍질의 생동감이 감도는 시트러스 향기입니다.";
       topNotes = ["Calabrian Bergamot", "Bitter Grapefruit"];
       heartNotes = ["Petitgrain", "Jasmine Accord"];
       baseNotes = ["Salty Vetiver", "Clean White Musk"];
-      advice = "Apply liberally following a morning shower. Prompts a bright, refreshing cloud of intellectual energy.";
+      advice = "아침 샤워 후 넉넉히 발라주세요. 맑고 상쾌한 지적인 에너지가 부드럽게 퍼집니다.";
     } else if (envVal === "matcha") {
       scentName = "MATCHA 22";
-      archetype = "The Quiet Meditator";
-      story = "An introverted, milky green tea solace inspired by foggy mornings inside rain-dampened glasshouses. It encourages moments of absolute presence.";
+      archetype = "고요한 명상가";
+      story = "비에 젖은 유리온실 안의 안개 낀 아침처럼, 우유빛 녹차의 위로와 온화한 침묵을 전합니다.";
       topNotes = ["Matcha Powder", "Bitter Orange"];
       heartNotes = ["Fleshy Sweet Fig", "Steaming Water Accord"];
       baseNotes = ["Rich Vetiver", "Sandalwood", "Cedarwood"];
-      advice = "Apply to the base of the neck. Offers a noble, soft silence that rests close to you.";
+      advice = "목 뒷부분에 발라주세요. 가까이 머무르는 부드러운 고요가 오래 남습니다.";
     } else if (envVal === "smoky") {
       scentName = "NOIR 27";
-      archetype = "The Velvet Shadow";
-      story = "A deep, hypnotic tribute to midnight tobacco leaves, old library leather, and black tea steam. It bridges raw power with exceptional softness.";
+      archetype = "벨벳 그림자";
+      story = "한밤의 담배잎과 오래된 도서관 가죽, 검은 차의 김이 어우러진 깊고 매혹적인 향입니다. 강렬함과 부드러움이 공존합니다.";
       topNotes = ["Bergamot", "Black Tea Extract"];
       heartNotes = ["Suede Leather", "Dry Fig", "Bay Leaves"];
       baseNotes = ["Damp Vetiver", "Cedarwood", "Dark Sweet Musk"];
-      advice = "Apply directly to collarbones before nightfall. Develops rich, complex sillage over 10 hours.";
+      advice = "해질녘에 쇄골 부위에 발라주세요. 10시간 이상 풍부하고 복합적인 잔향이 완성됩니다.";
     }
 
     return { scentName, archetype, story, topNotes, heartNotes, baseNotes, advice };
