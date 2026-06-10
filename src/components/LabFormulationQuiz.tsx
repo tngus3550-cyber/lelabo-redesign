@@ -69,53 +69,16 @@ export default function LabFormulationQuiz({ isOpen, onClose, onAddCustomToCart 
       "🖨️ 라벨링용 아날로그 프린터 준비 중..."
     ];
 
-    // Trigger full API request in parallel
-    const apiPromise = fetch("/api/formulate", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: userName || "GUEST", answers })
-    })
-      .then((res) => res.json())
-      .catch((err) => {
-        console.error("API Error - running local synthesis fallback:", err);
-        return null;
-      });
-
     // Run typewriter visual simulation stages
     for (let i = 0; i < simulationSteps.length; i++) {
       setLoadingStepText(simulationSteps[i]);
       await delay(800);
     }
 
-    const apiResponse = await apiPromise;
+    const localBlend = generateScentFormula(answers, userName || "GUEST");
+    setFormulationResult(localBlend);
+
     setIsLoadingScent(false);
-
-    if (apiResponse) {
-      const currentDate = new Date().toISOString().split('T')[0].replace(/-/g, "/");
-      // Format response to conform to UI representation
-      setFormulationResult({
-        formulaId: `LAB-${Math.floor(100 + Math.random() * 899)}`,
-        baseScent: apiResponse.scentName,
-        archetype: apiResponse.archetype,
-        concentration: "23.4% (EAU DE PARFUM)",
-        ingredients: [
-          { name: apiResponse.topNotes[0], percentage: "25%" },
-          { name: apiResponse.heartNotes[0], percentage: "15%" },
-          { name: apiResponse.baseNotes[0], percentage: "15%" },
-          { name: "유기농 에멀전 코어 (SOHO-9 기본재)", percentage: "45%" }
-        ],
-        wearAdvice: apiResponse.advice || apiResponse.story,
-        labelName: userName.toUpperCase(),
-        dateCreated: currentDate,
-        location: "뉴욕 소호 연구소",
-        notes: apiResponse.story
-      });
-    } else {
-      // Offline fallback
-      const localBlend = generateScentFormula(answers, userName || "GUEST");
-      setFormulationResult(localBlend);
-    }
-
     setStep("result");
   };
 
@@ -128,7 +91,7 @@ export default function LabFormulationQuiz({ isOpen, onClose, onAddCustomToCart 
       labelDate: formulationResult.dateCreated,
       labelAt: formulationResult.location,
       price: 440000,
-      image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=800",
+      image: formulationResult.image,
       isCustomFormulation: true
     });
     onClose();

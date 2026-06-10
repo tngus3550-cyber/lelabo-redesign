@@ -6,3 +6,9 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# Claude Code
+.claude/
+.claude.json
+CLAUDE.md
+.mcp.json

@@ -17,10 +17,18 @@ interface ScentMixerProps {
   }) => void;
 }
 
+type NoteProfile = {
+  woody: number;
+  citrus: number;
+  herbal: number;
+  floral: number;
+  musky: number;
+};
+
 export default function ScentMixer({ isOpen, onClose, onAddCustomToCart }: ScentMixerProps) {
   if (!isOpen) return null;
 
-  const [notes, setNotes] = useState({
+  const [notes, setNotes] = useState<NoteProfile>({
     woody: 40,
     citrus: 20,
     herbal: 10,
@@ -39,7 +47,7 @@ export default function ScentMixer({ isOpen, onClose, onAddCustomToCart }: Scent
   };
 
   // Proportional distribution: adjust all other values to maintain 100% total
-  const handleSliderChange = (changedKey: keyof typeof notes, newValue: number) => {
+  const handleSliderChange = (changedKey: keyof NoteProfile, newValue: number) => {
     const clampedValue = clampPercent(newValue);
     
     setNotes((prev) => {
@@ -52,10 +60,10 @@ export default function ScentMixer({ isOpen, onClose, onAddCustomToCart }: Scent
       const change = clampedValue - prev[changedKey];
       
       // Create a new state object
-      const updated = { ...prev, [changedKey]: clampedValue };
+      const updated: NoteProfile = { ...prev, [changedKey]: clampedValue };
       
       // Get all other keys
-      const otherKeys = (Object.keys(updated) as Array<keyof typeof notes>).filter(k => k !== changedKey);
+      const otherKeys = (Object.keys(updated) as Array<keyof NoteProfile>).filter(k => k !== changedKey);
       
       // Calculate total of other values
       const otherTotal = otherKeys.reduce((sum, k) => sum + updated[k], 0);
@@ -110,7 +118,7 @@ export default function ScentMixer({ isOpen, onClose, onAddCustomToCart }: Scent
 
   // Determine dynamic scent profile based on proportions
   const getDynamicName = () => {
-    const sorted = (Object.entries(notes) as [keyof typeof notes, number][]).sort((a, b) => b[1] - a[1]);
+    const sorted = (Object.entries(notes) as [keyof NoteProfile, number][]).sort((a, b) => b[1] - a[1]);
     const dominant = sorted[0][0];
     const secondary = sorted[1][0];
 
@@ -185,7 +193,7 @@ export default function ScentMixer({ isOpen, onClose, onAddCustomToCart }: Scent
           </div>
 
           <div className="space-y-4 font-mono text-[10px]">
-            {Object.entries(notes).map(([key, val]) => {
+            {(Object.entries(notes) as [keyof NoteProfile, number][]).map(([key, val]) => {
               const displayValue = clampPercent(val);
               return (
                 <div key={key} className="space-y-1.5 uppercase">
@@ -202,7 +210,7 @@ export default function ScentMixer({ isOpen, onClose, onAddCustomToCart }: Scent
                     onChange={(e) => {
                       const inputValue = parseInt(e.target.value, 10);
                       if (!Number.isNaN(inputValue)) {
-                        handleSliderChange(key as keyof typeof notes, inputValue);
+                        handleSliderChange(key as keyof NoteProfile, inputValue);
                       }
                     }}
                     className="w-full h-1 bg-[#efeded] appearance-none cursor-pointer accent-black outline-none transition-all focus:outline-none"
