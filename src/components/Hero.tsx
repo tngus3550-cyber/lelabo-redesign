@@ -12,6 +12,15 @@ export default function Hero({ onExploreClick, onViewCollectionClick }: HeroProp
   return (
     <section id="hero" className="relative w-full h-[100vh] min-h-[600px] overflow-hidden bg-[#1b1c1c] text-white flex items-end pb-16 md:pb-24">
       {/* Immersive Lab Background Image */}
+              {/* Fallback Image for browsers that don't support video */}
+        <motion.img
+          src={heroImage}
+          alt="Artisanal Fragrance Laboratory Formulation background"
+          initial={{ scale: 1.05, opacity: 0.7 }}
+          animate={{ scale: 1, opacity: 0.55 }}
+          transition={{ duration: 2.2, ease: "easeOut" }}
+          className="absolute inset-0 w-full h-full object-cover filter contrast-115 brightness-95"
+        />
       <div className="absolute inset-0 z-0">
         {/* Hero Video Background */}
         <motion.video
@@ -24,15 +33,6 @@ export default function Hero({ onExploreClick, onViewCollectionClick }: HeroProp
           animate={{ scale: 1, opacity: 0.6 }}
           transition={{ duration: 2.2, ease: "easeOut" }}
           className="w-full h-full object-cover filter contrast-115 brightness-95"
-        />
-        {/* Fallback Image for browsers that don't support video */}
-        <motion.img
-          src={heroImage}
-          alt="Artisanal Fragrance Laboratory Formulation background"
-          initial={{ scale: 1.05, opacity: 0.7 }}
-          animate={{ scale: 1, opacity: 0.55 }}
-          transition={{ duration: 2.2, ease: "easeOut" }}
-          className="absolute inset-0 w-full h-full object-cover filter contrast-115 brightness-95"
         />
         {/* Soft shadow gradients to elevate technical text legibility */}
         <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black via-black/40 to-transparent pointer-events-none" />
