@@ -13,6 +13,7 @@ export default function Hero({ onExploreClick, onViewCollectionClick }: HeroProp
     <section id="hero" className="relative w-full h-[100vh] min-h-[600px] overflow-hidden bg-[#1b1c1c] text-white flex items-end pb-16 md:pb-24">
       {/* Immersive Lab Background Image */}
               {/* Fallback Image for browsers that don't support video */}
+        {/*
         <motion.img
           src={heroImage}
           alt="Artisanal Fragrance Laboratory Formulation background"
@@ -21,6 +22,7 @@ export default function Hero({ onExploreClick, onViewCollectionClick }: HeroProp
           transition={{ duration: 2.2, ease: "easeOut" }}
           className="absolute inset-0 w-full h-full object-cover filter contrast-115 brightness-95"
         />
+         */}
       <div className="absolute inset-0 z-0">
         {/* Hero Video Background */}
         <motion.video
