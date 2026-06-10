@@ -1,8 +1,7 @@
 import { motion } from "motion/react";
 import { useState } from "react";
-
-const heroImage = new URL("../assets/images/perfumer_lab_hero_1780294612666.png", import.meta.url).href;
-const heroVideo = new URL("../assets/images/hero-video.mp4", import.meta.url).href;
+import heroVideo from "../assets/images/hero-video.mp4";
+import heroImage from "../assets/images/perfumer_lab_hero_1780294612666.png";
 
 interface HeroProps {
   onExploreClick: () => void;
