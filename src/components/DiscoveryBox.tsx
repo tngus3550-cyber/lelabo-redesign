@@ -6,9 +6,10 @@ const discoveryImage = new URL("../assets/images/regenerated_image_1780295933719
 interface DiscoveryBoxProps {
   onOpenQuiz: () => void;
   onOpenMixer: () => void;
+  onViewCollections: () => void;
 }
 
-export default function DiscoveryBox({ onOpenQuiz, onOpenMixer }: DiscoveryBoxProps) {
+export default function DiscoveryBox({ onOpenQuiz, onOpenMixer, onViewCollections }: DiscoveryBoxProps) {
   return (
     <section
       id="discovery"
@@ -47,7 +48,7 @@ export default function DiscoveryBox({ onOpenQuiz, onOpenMixer }: DiscoveryBoxPr
             </p>
             <button
               id="btn-discover-more-quiz"
-              onClick={onOpenQuiz}
+              onClick={onViewCollections}
               className="border border-white hover:bg-white hover:text-black transition-all duration-300 text-xs uppercase tracking-widest font-mono font-bold px-8 py-4 bg-transparent cursor-pointer"
             >
               자세히 보기

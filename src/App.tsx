@@ -1,16 +1,9 @@
 import { useState, useEffect } from "react";
-import Header from "./components/Header";
-import SearchModal from "./components/SearchModal";
-import LoginModal from "./components/LoginModal";
-import Hero from "./components/Hero";
-import Philosophy from "./components/Philosophy";
-import Archive from "./components/Archive";
-import DiscoveryBox from "./components/DiscoveryBox";
-import CartDrawer from "./components/CartDrawer";
-import ProductDetailModal from "./components/ProductDetailModal";
-import LabFormulationQuiz from "./components/LabFormulationQuiz";
-import ScentMixer from "./components/ScentMixer";
-import Footer from "./components/Footer";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Collections from "./pages/Collections";
+import DiscoverySetPage from "./pages/DiscoverySetPage";
+import ClassicCollectionPage from "./pages/ClassicCollectionPage";
 import { ScentProduct } from "./types";
 
 interface CartItem {
@@ -100,7 +93,6 @@ export default function App() {
       saveCart([...cartItems, { ...newItem, quantity: 1 }]);
     }
     
-    // Automatically trigger cart show to give gorgeous reinforcement feedback
     setIsCartOpen(true);
   };
 
@@ -123,100 +115,79 @@ export default function App() {
     saveCart(updated);
   };
 
-  // Smooth scroll helper
-  const handleScrollToSection = (sectionId: string) => {
-    const target = document.getElementById(sectionId);
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
-
-  const totalCartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
-
   return (
-    <div className="min-h-screen bg-[#fbf9f9] text-[#1b1c1c] selection:bg-black selection:text-white antialiased">
-      {/* Header element */}
-      <Header
-        onNavClick={handleScrollToSection}
-        onOpenCart={() => setIsCartOpen(true)}
-        cartCount={totalCartCount}
-        onOpenSearch={() => setIsSearchOpen(true)}
-        onOpenLogin={() => setIsLoginOpen(true)}
-        currentUser={currentUser}
-        onLogout={handleLogout}
-      />
-
-      {/* Main sections */}
-      <main className="relative">
-        <Hero
-          onExploreClick={() => setIsQuizOpen(true)}
-          onViewCollectionClick={() => handleScrollToSection("archive")}
-        />
-
-        {/* Section divider wrapper */}
-        <div className="relative">
-          <Philosophy />
-          <Archive onProductClick={(prod) => setSelectedProduct(prod)} />
-          <DiscoveryBox
-            onOpenQuiz={() => setIsQuizOpen(true)}
-            onOpenMixer={() => setIsMixerOpen(true)}
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <Home
+            cartItems={cartItems}
+            setCartItems={setCartItems}
+            isCartOpen={isCartOpen}
+            setIsCartOpen={setIsCartOpen}
+            selectedProduct={selectedProduct}
+            setSelectedProduct={setSelectedProduct}
+            currentUser={currentUser}
+            setCurrentUser={setCurrentUser}
+            isSearchOpen={isSearchOpen}
+            setIsSearchOpen={setIsSearchOpen}
+            isLoginOpen={isLoginOpen}
+            setIsLoginOpen={setIsLoginOpen}
+            isQuizOpen={isQuizOpen}
+            setIsQuizOpen={setIsQuizOpen}
+            isMixerOpen={isMixerOpen}
+            setIsMixerOpen={setIsMixerOpen}
           />
-        </div>
-      </main>
-
-      {/* Footer element */}
-      <Footer />
-
-      {/* Slide-out Cart Drawer overlay */}
-      <CartDrawer
-        isOpen={isCartOpen}
-        onClose={() => setIsCartOpen(false)}
-        cartItems={cartItems}
-        onRemoveItem={handleRemoveItem}
-        onUpdateQuantity={handleUpdateQuantity}
+        }
       />
-
-      {/* Product Customizer Detail Modal */}
-      <ProductDetailModal
-        product={selectedProduct}
-        onClose={() => setSelectedProduct(null)}
-        onAddToCart={handleAddToCart}
-        currentUser={currentUser}
+      <Route
+        path="/collections"
+        element={
+          <Collections
+            cartItems={cartItems}
+            isCartOpen={isCartOpen}
+            setIsCartOpen={setIsCartOpen}
+            currentUser={currentUser}
+            onLogout={handleLogout}
+            onRemoveItem={handleRemoveItem}
+            onUpdateQuantity={handleUpdateQuantity}
+          />
+        }
       />
-
-      {/* Dynamic Search Modal */}
-      <SearchModal
-        isOpen={isSearchOpen}
-        onClose={() => setIsSearchOpen(false)}
-        onProductClick={(prod) => {
-          setSelectedProduct(prod);
-          setIsSearchOpen(false);
-        }}
+      <Route
+        path="/collections/discovery-set"
+        element={
+          <DiscoverySetPage
+            cartItems={cartItems}
+            isCartOpen={isCartOpen}
+            setIsCartOpen={setIsCartOpen}
+            selectedProduct={selectedProduct}
+            setSelectedProduct={setSelectedProduct}
+            currentUser={currentUser}
+            onLogout={handleLogout}
+            onRemoveItem={handleRemoveItem}
+            onUpdateQuantity={handleUpdateQuantity}
+            onAddToCart={handleAddToCart}
+          />
+        }
       />
-
-      {/* Dynamic Sign-In Modal */}
-      <LoginModal
-        isOpen={isLoginOpen}
-        onClose={() => setIsLoginOpen(false)}
-        onLoginSuccess={(user) => {
-          setCurrentUser(user);
-          setIsLoginOpen(false);
-        }}
+      <Route
+        path="/collections/classic-collection"
+        element={
+          <ClassicCollectionPage
+            cartItems={cartItems}
+            isCartOpen={isCartOpen}
+            setIsCartOpen={setIsCartOpen}
+            selectedProduct={selectedProduct}
+            setSelectedProduct={setSelectedProduct}
+            currentUser={currentUser}
+            onLogout={handleLogout}
+            onRemoveItem={handleRemoveItem}
+            onUpdateQuantity={handleUpdateQuantity}
+            onAddToCart={handleAddToCart}
+          />
+        }
       />
-
-      {/* Scent Formulation (Discovery Collection) Quiz */}
-      <LabFormulationQuiz
-        isOpen={isQuizOpen}
-        onClose={() => setIsQuizOpen(false)}
-        onAddCustomToCart={handleAddToCart}
-      />
-
-      {/* Olfactory Scent Sliders Composition Sandbox */}
-      <ScentMixer
-        isOpen={isMixerOpen}
-        onClose={() => setIsMixerOpen(false)}
-        onAddCustomToCart={handleAddToCart}
-      />
-    </div>
+    </Routes>
   );
 }
